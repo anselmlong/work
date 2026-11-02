@@ -15,36 +15,92 @@ const outcomes = [
 
 const work = [
   {
+    name: "anselmlong.com",
+    href: "https://anselmlong.com",
+    host: "anselmlong.com",
+    image: "/work/personal.webp",
+    width: 1600,
+    height: 1000,
+    wide: true,
+    alt: "Anselm Long's own site, with his name set over a photograph of the Golden Gate Bridge",
+    text: "His own site: the work, the writing, and a way to ask a question. Built as a full site, not a single card.",
+  },
+  {
     name: "Scallion",
     href: "https://scallion.io",
     host: "scallion.io",
     image: "/work/scallion.webp",
+    width: 1600,
+    height: 1000,
+    wide: false,
     alt: "Scallion start screen, a pixel-art city at dusk with a button to begin the climb",
-    text: "A complete product people can pay to use, with group rooms and an admin panel. More than a single landing page.",
-  },
-  {
-    name: "Photos",
-    href: "https://photos.anselmlong.com",
-    host: "photos.anselmlong.com",
-    image: "/work/photos.webp",
-    alt: "Booking form on the photos site, asking for event details before a quote",
-    text: "A small-business site where a booking form becomes a quote and a PDF. The closest match to what most owners need.",
+    text: "A complete product people pay to use, with group rooms and an admin side. More than a brochure.",
   },
   {
     name: "MassGoWhere",
     href: "https://massgowhere.com",
     host: "massgowhere.com",
     image: "/work/massgowhere.webp",
+    width: 1600,
+    height: 1000,
+    wide: false,
     alt: "MassGoWhere home screen with choices for a Mass, adoration, or confession",
-    text: "Helps people find a Mass they can still reach in Singapore, by train, car, or on foot, with a Telegram bot alongside the site.",
+    text: "Helps someone find a Mass they can still reach in Singapore, by train, car, or on foot, and when to leave. A Telegram bot sits beside the site.",
   },
   {
     name: "Kopitype",
     href: "https://kopitype.com",
     host: "kopitype.com",
     image: "/work/kopitype.webp",
+    width: 1600,
+    height: 1000,
+    wide: false,
     alt: "Kopitype in the middle of a Singlish typing test, timer at 30 seconds",
-    text: "A short site people come back to, with a public leaderboard.",
+    text: "A short site people come back to, with a public leaderboard. Built around Singapore English, stations, and local phrases.",
+  },
+  {
+    name: "Computah",
+    href: "https://computah.anselmlong.com",
+    host: "computah.anselmlong.com",
+    image: "/work/computah.webp",
+    width: 1600,
+    height: 1000,
+    wide: false,
+    alt: "Computah site, a Mac companion with a live conversation panel",
+    text: "A desktop companion that can see the screen and help with the next step, inside limits you set. It ships as a Mac app.",
+  },
+  {
+    name: "Optifiner",
+    href: "https://optifiner.dev",
+    host: "optifiner.dev",
+    image: "/work/optifiner.webp",
+    width: 1600,
+    height: 1000,
+    wide: false,
+    alt: "Optifiner homepage with a button to launch the dashboard",
+    text: "Tries many code changes at once and keeps the ones that measure better. A dashboard shows the run.",
+  },
+  {
+    name: "Canvas scraper",
+    href: "https://canvas-scraper.vercel.app",
+    host: "canvas-scraper.vercel.app",
+    image: "/work/canvas.webp",
+    width: 1600,
+    height: 1000,
+    wide: false,
+    alt: "Canvas scraper page explaining a daily file sync that skips large recordings",
+    text: "Pulls new course files to a laptop, skips the huge recordings, and emails what changed. It runs every day at noon.",
+  },
+  {
+    name: "Telegram bots",
+    href: "https://bot.anselmlong.com",
+    host: "bot.anselmlong.com",
+    image: "/work/bots.webp",
+    width: 1600,
+    height: 1000,
+    wide: true,
+    alt: "A page of Telegram bots for daily readings, aircon credits, and a group counter",
+    text: "Bots he runs from Singapore. One sends the day's readings at an hour you choose. One warns before aircon credits run out. One counts a number in a group chat.",
   },
 ] as const;
 
@@ -67,10 +123,7 @@ const rates = [
 const terms = "50% deposit, 50% before go-live, paynow.";
 
 const faqs = [
-  {
-    q: "Do I own the site?",
-    a: "Yes.",
-  },
+  { q: "Do I own the site?", a: "Yes." },
   {
     q: "What if you disappear?",
     a: "Everything's in your name plus a handover doc.",
@@ -90,15 +143,51 @@ const nav = [
   ["Contact", "#contact"],
 ] as const;
 
+function Frame({
+  href,
+  alt,
+  src,
+  width,
+  height,
+  priority,
+}: {
+  href: string;
+  alt: string;
+  src: string;
+  width: number;
+  height: number;
+  priority?: boolean;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block bg-[#140f0c] p-1.5 shadow-[0_16px_36px_rgba(8,5,2,0.45)] sm:p-2"
+    >
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        priority={priority}
+        sizes="(min-width: 800px) 46vw, 100vw"
+        className="aspect-[16/10] h-auto w-full object-cover object-top"
+      />
+      <span className="sr-only"> (opens in a new tab)</span>
+    </a>
+  );
+}
+
 export default function Home() {
   return (
     <>
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <header className="site-header sticky top-0 z-20 border-b border-white/10 bg-ink text-paper">
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-5 py-3 sm:px-8">
-          <a href="#top" className="font-display text-lg tracking-tight">
+      <header className="sticky top-0 z-20 border-b border-brass/40 bg-timber/95 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-1 px-5 py-3 sm:px-8">
+          <a href="#top" className="font-display text-xl tracking-tight text-ivory">
             Anselm Long
           </a>
           <nav aria-label="Page">
@@ -107,7 +196,7 @@ export default function Home() {
                 <li key={href}>
                   <a
                     href={href}
-                    className="inline-flex min-h-11 items-center text-sm text-paper/90 underline decoration-transparent underline-offset-4 hover:text-paper hover:decoration-paper"
+                    className="inline-flex min-h-11 items-center text-sm text-ivory/90 underline decoration-transparent underline-offset-4 hover:text-ivory hover:decoration-brass"
                   >
                     {label}
                   </a>
@@ -118,46 +207,58 @@ export default function Home() {
         </div>
       </header>
       <main id="main">
-        <section id="top" className="border-b border-line bg-white">
-          <div className="mx-auto max-w-5xl px-5 py-16 sm:px-8 sm:py-24">
-            <p className="text-sm font-medium text-muted">Based in Singapore</p>
-            <h1 className="mt-4 max-w-3xl font-display text-4xl leading-tight tracking-tight sm:text-6xl">
-              Websites for small businesses
-            </h1>
-            <p className="mt-5 text-xl sm:text-2xl">Anselm Long, independent web developer</p>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed">
-              For shop owners, clinics, tutors, contractors, and F&amp;B businesses.
-            </p>
-            <ul className="mt-8 grid max-w-2xl gap-x-10 gap-y-2 sm:grid-cols-2">
-              {outcomes.map((item) => (
-                <li key={item} className="border-t border-line py-3 text-base">
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 flex flex-col items-start gap-3">
-              <a
-                href={mailto}
-                className="inline-flex min-h-12 items-center bg-ink px-5 text-base text-paper hover:bg-[#243044]"
-              >
-                Contact
-              </a>
-              <a href={mailto} className="text-sm text-muted underline underline-offset-4">
-                {email}
-              </a>
+        <section id="top" className="px-4 pt-4 sm:px-8 sm:pt-6">
+          <div className="relative mx-auto max-w-6xl bg-[#140f0c] p-2 shadow-[0_22px_50px_rgba(8,5,2,0.5)] sm:p-3">
+            <a href="https://photos.anselmlong.com" target="_blank" rel="noopener noreferrer" className="block">
+              <Image
+                src="/work/photos.webp"
+                alt="Booking form on the photos site, asking for event details before a quote"
+                width={1600}
+                height={1000}
+                priority
+                sizes="100vw"
+                className="hero-shot"
+              />
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+            <div className="bg-ivory px-5 py-6 text-ink sm:absolute sm:bottom-6 sm:left-6 sm:w-[min(26rem,42%)] sm:px-6 sm:py-6 sm:shadow-[0_18px_40px_rgba(8,5,2,0.35)]">
+              <h1 className="font-display text-[2.6rem] leading-[0.95] tracking-tight sm:text-5xl">
+                Websites for small businesses
+              </h1>
+              <p className="mt-4 text-lg leading-snug">
+                Anselm Long, independent web developer in Singapore.
+              </p>
+              <p className="mt-3 text-base leading-relaxed text-muted">
+                For shop owners, clinics, tutors, contractors, and F&amp;B businesses.
+              </p>
+              <div className="mt-5 flex flex-col items-start gap-2">
+                <a
+                  href={mailto}
+                  className="inline-flex min-h-12 items-center bg-brass px-5 font-medium text-timber hover:bg-[#d8b778]"
+                >
+                  Contact
+                </a>
+                <a href={mailto} className="text-sm text-muted underline underline-offset-4">
+                  {email}
+                </a>
+              </div>
             </div>
           </div>
+          <ul className="mx-auto mt-4 grid max-w-6xl gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {outcomes.map((item) => (
+              <li key={item} className="bg-ivory px-4 py-3 text-base text-ink">
+                {item}
+              </li>
+            ))}
+          </ul>
         </section>
 
-        <section id="about" aria-labelledby="about-title">
-          <div className="mx-auto grid max-w-5xl gap-4 px-5 py-16 sm:grid-cols-[11rem_1fr] sm:px-8 sm:py-20">
-            <div>
-              <p className="text-sm text-muted">01</p>
-              <h2 id="about-title" className="mt-1 font-display text-3xl tracking-tight">
-                About
-              </h2>
-            </div>
-            <div className="max-w-prose space-y-4 text-lg leading-relaxed">
+        <section id="about" aria-labelledby="about-title" className="px-4 py-16 sm:px-8 sm:py-24">
+          <div className="mx-auto grid max-w-6xl gap-8 bg-ivory px-6 py-10 text-ink sm:px-10 sm:py-14 lg:grid-cols-[16rem_1fr]">
+            <h2 id="about-title" className="font-display text-4xl tracking-tight">
+              About
+            </h2>
+            <div className="max-w-[68ch] space-y-4 text-lg leading-relaxed">
               <p>
                 I am an independent software developer based in Singapore. I build websites for
                 small businesses and stay available after they go live.
@@ -171,42 +272,39 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="work" aria-labelledby="work-title" className="border-t border-line">
-          <div className="mx-auto max-w-5xl px-5 py-16 sm:px-8 sm:py-20">
-            <p className="text-sm text-muted">02</p>
-            <h2 id="work-title" className="mt-1 font-display text-3xl tracking-tight">
+        <section id="work" aria-labelledby="work-title" className="px-4 pb-8 sm:px-8">
+          <div className="mx-auto max-w-6xl border-l border-brass/70 pl-5 sm:pl-8">
+            <h2 id="work-title" className="font-display text-4xl tracking-tight text-ivory sm:text-5xl">
               Selected work
             </h2>
-            <p className="mt-4 max-w-prose text-lg leading-relaxed">
-              Live products. The photography site is the closest to a typical small-business job.
+            <p className="mt-4 max-w-[62ch] text-lg leading-relaxed text-ivory/80">
+              Live sites. The photograph above is the closest to a typical small-business job: a
+              booking form that becomes a quote and a PDF.
             </p>
-            <ul className="mt-10 grid gap-12 sm:grid-cols-2">
-              {work.map((item, index) => (
-                <li key={item.href}>
-                  <article>
-                    <a href={item.href} target="_blank" rel="noopener noreferrer" className="block">
-                      <Image
-                        src={item.image}
-                        alt={item.alt}
-                        width={1600}
-                        height={1000}
-                        priority={index === 0}
-                        sizes="(min-width: 640px) 480px, 100vw"
-                        className="h-auto w-full border border-line bg-white"
-                      />
-                      <span className="sr-only"> (opens in a new tab)</span>
-                    </a>
-                    <h3 className="mt-4 font-display text-2xl tracking-tight">{item.name}</h3>
-                    <p className="mt-2 leading-relaxed">{item.text}</p>
-                    <a
+            <ul className="mt-12 grid gap-14 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-16">
+              {work.map((item) => (
+                <li key={item.href} className={item.wide ? "sm:col-span-2" : ""}>
+                  <article className={item.wide ? "sm:grid sm:grid-cols-[1.35fr_0.8fr] sm:items-end sm:gap-8" : ""}>
+                    <Frame
                       href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-3 inline-flex min-h-11 items-center underline underline-offset-4"
-                    >
-                      {item.host}
-                      <span className="sr-only"> (opens in a new tab)</span>
-                    </a>
+                      alt={item.alt}
+                      src={item.image}
+                      width={item.width}
+                      height={item.height}
+                    />
+                    <div className="mt-4 sm:mt-0">
+                      <h3 className="font-display text-3xl tracking-tight text-ivory">{item.name}</h3>
+                      <p className="mt-2 max-w-[48ch] leading-relaxed text-ivory/80">{item.text}</p>
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-3 inline-flex min-h-11 items-center text-brass underline underline-offset-4"
+                      >
+                        {item.host}
+                        <span className="sr-only"> (opens in a new tab)</span>
+                      </a>
+                    </div>
                   </article>
                 </li>
               ))}
@@ -214,15 +312,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="process" aria-labelledby="process-title" className="border-t border-line">
-          <div className="mx-auto grid max-w-5xl gap-4 px-5 py-16 sm:grid-cols-[11rem_1fr] sm:px-8 sm:py-20">
-            <div>
-              <p className="text-sm text-muted">03</p>
-              <h2 id="process-title" className="mt-1 font-display text-3xl tracking-tight">
-                How it works
-              </h2>
-            </div>
-            <ol className="max-w-prose list-decimal space-y-4 pl-5 text-lg leading-relaxed">
+        <section id="process" aria-labelledby="process-title" className="px-4 py-16 sm:px-8 sm:py-24">
+          <div className="mx-auto grid max-w-6xl gap-8 bg-ivory px-6 py-10 text-ink sm:px-10 sm:py-14 lg:grid-cols-[16rem_1fr]">
+            <h2 id="process-title" className="font-display text-4xl tracking-tight">
+              How it works
+            </h2>
+            <ol className="max-w-[68ch] list-decimal space-y-4 pl-5 text-lg leading-relaxed">
               {steps.map((step) => (
                 <li key={step}>{step}</li>
               ))}
@@ -230,14 +325,11 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="pricing" aria-labelledby="pricing-title" className="border-t border-line">
-          <div className="mx-auto grid max-w-5xl gap-4 px-5 py-16 sm:grid-cols-[11rem_1fr] sm:px-8 sm:py-20">
-            <div>
-              <p className="text-sm text-muted">04</p>
-              <h2 id="pricing-title" className="mt-1 font-display text-3xl tracking-tight">
-                Pricing
-              </h2>
-            </div>
+        <section id="pricing" aria-labelledby="pricing-title" className="px-4 pb-4 sm:px-8">
+          <div className="mx-auto grid max-w-6xl gap-8 bg-ivory px-6 py-10 text-ink sm:px-10 sm:py-14 lg:grid-cols-[16rem_1fr]">
+            <h2 id="pricing-title" className="font-display text-4xl tracking-tight">
+              Pricing
+            </h2>
             <div className="max-w-3xl">
               <p className="text-lg">All prices are in SGD. GST is not included.</p>
               <ul className="mt-6 divide-y divide-line border-y border-line">
@@ -252,23 +344,20 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="faq" aria-labelledby="faq-title" className="border-t border-line">
-          <div className="mx-auto grid max-w-5xl gap-4 px-5 py-16 sm:grid-cols-[11rem_1fr] sm:px-8 sm:py-20">
-            <div>
-              <p className="text-sm text-muted">05</p>
-              <h2 id="faq-title" className="mt-1 font-display text-3xl tracking-tight">
-                Questions
-              </h2>
-            </div>
-            <div className="max-w-prose border-t border-line">
+        <section id="faq" aria-labelledby="faq-title" className="px-4 py-16 sm:px-8 sm:py-20">
+          <div className="mx-auto grid max-w-6xl gap-8 bg-ivory px-6 py-10 text-ink sm:px-10 sm:py-14 lg:grid-cols-[16rem_1fr]">
+            <h2 id="faq-title" className="font-display text-4xl tracking-tight">
+              Questions
+            </h2>
+            <div className="max-w-[68ch] border-t border-line">
               {faqs.map((item) => (
                 <details key={item.q} className="group border-b border-line">
                   <summary className="flex min-h-12 cursor-pointer items-center justify-between gap-4 py-3 text-lg">
                     <span>{item.q}</span>
-                    <span aria-hidden="true" className="text-muted group-open:hidden">
+                    <span aria-hidden="true" className="text-ink group-open:hidden">
                       +
                     </span>
-                    <span aria-hidden="true" className="hidden text-muted group-open:inline">
+                    <span aria-hidden="true" className="hidden text-ink group-open:inline">
                       -
                     </span>
                   </summary>
@@ -279,22 +368,19 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" aria-labelledby="contact-title" className="border-t border-line">
-          <div className="mx-auto grid max-w-5xl gap-4 px-5 py-16 sm:grid-cols-[11rem_1fr] sm:px-8 sm:py-20">
-            <div>
-              <p className="text-sm text-muted">06</p>
-              <h2 id="contact-title" className="mt-1 font-display text-3xl tracking-tight">
-                Contact
-              </h2>
-            </div>
-            <div className="max-w-prose">
-              <p className="text-lg leading-relaxed">
+        <section id="contact" aria-labelledby="contact-title" className="px-4 pb-16 sm:px-8">
+          <div className="mx-auto grid max-w-6xl gap-8 border border-brass/50 px-6 py-10 sm:px-10 sm:py-14 lg:grid-cols-[16rem_1fr]">
+            <h2 id="contact-title" className="font-display text-4xl tracking-tight text-ivory">
+              Contact
+            </h2>
+            <div className="max-w-[62ch]">
+              <p className="text-lg leading-relaxed text-ivory/85">
                 Email is the direct way to reach me. Tell me what the business does and what you
                 need the site to do.
               </p>
               <a
                 href={mailto}
-                className="mt-6 inline-flex min-h-12 items-center text-2xl underline underline-offset-4"
+                className="mt-6 inline-flex min-h-12 items-center font-display text-3xl text-brass underline underline-offset-4"
               >
                 {email}
               </a>
@@ -303,7 +389,7 @@ export default function Home() {
                   href={github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center underline underline-offset-4"
+                  className="inline-flex min-h-11 items-center text-ivory underline underline-offset-4"
                 >
                   github.com/anselmlong
                   <span className="sr-only"> (opens in a new tab)</span>
@@ -313,8 +399,8 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="border-t border-line bg-white">
-        <p className="mx-auto max-w-5xl px-5 py-8 text-sm text-muted sm:px-8">
+      <footer className="border-t border-brass/30">
+        <p className="mx-auto max-w-6xl px-5 py-8 text-sm text-ivory/70 sm:px-8">
           Anselm Long, independent web developer in Singapore.
         </p>
       </footer>
