@@ -1,6 +1,6 @@
-# anselm long
+# Anselm Long
 
-freelance websites for singapore small businesses.
+Websites for Singapore small businesses.
 
 ```
 npm install

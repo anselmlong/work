@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f6f3ec;
-  --ink: #1c1915;
-  --muted: #5c564c;
-  --line: #e3dcd0;
+  --paper: #f4f6f8;
+  --ink: #152033;
+  --muted: #4a5568;
+  --line: #d5dbe3;
 }
 
 @theme inline {
   --font-sans: var(--font-source), "Source Sans 3", sans-serif;
-  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-display: var(--font-source-serif), Georgia, "Times New Roman", serif;
   --color-paper: var(--paper);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
@@ -25,6 +25,10 @@ body {
 :focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 3px;
+}
+
+.site-header :focus-visible {
+  outline-color: #f4f6f8;
 }
 
 .skip-link {

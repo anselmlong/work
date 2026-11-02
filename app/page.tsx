@@ -4,46 +4,55 @@ const email = "anselmpius@gmail.com";
 const mailto = `mailto:${email}`;
 const github = "https://github.com/anselmlong";
 
+const outcomes = [
+  "More enquiries and bookings",
+  "Looks trustworthy on a phone",
+  "Fast to load",
+  "You own it, with no lock-in",
+  "A clear fixed price",
+  "One person accountable",
+];
+
 const work = [
   {
-    name: "scallion",
+    name: "Scallion",
     href: "https://scallion.io",
     host: "scallion.io",
     image: "/work/scallion.webp",
     alt: "Scallion start screen, a pixel-art city at dusk with a button to begin the climb",
-    text: "daily pixel-art word game with an ai judge, stripe payments, party rooms, and an admin panel. a full product, not a landing page.",
+    text: "A complete product people can pay to use, with group rooms and an admin panel. More than a single landing page.",
   },
   {
-    name: "photos",
+    name: "Photos",
     href: "https://photos.anselmlong.com",
     host: "photos.anselmlong.com",
     image: "/work/photos.webp",
     alt: "Booking form on the photos site, asking for event details before a quote",
-    text: "a small-business site where a booking form turns into a quote builder and a pdf. closest to what clients buy.",
+    text: "A small-business site where a booking form becomes a quote and a PDF. The closest match to what most owners need.",
   },
   {
-    name: "massgowhere",
+    name: "MassGoWhere",
     href: "https://massgowhere.com",
     host: "massgowhere.com",
     image: "/work/massgowhere.webp",
     alt: "MassGoWhere home screen with choices for a Mass, adoration, or confession",
-    text: "find a reachable mass in singapore by transit, car, or foot, plus a telegram bot.",
+    text: "Helps people find a Mass they can still reach in Singapore, by train, car, or on foot, with a Telegram bot alongside the site.",
   },
   {
-    name: "kopitype",
+    name: "Kopitype",
     href: "https://kopitype.com",
     host: "kopitype.com",
     image: "/work/kopitype.webp",
     alt: "Kopitype in the middle of a Singlish typing test, timer at 30 seconds",
-    text: "a singlish typing game with a leaderboard.",
+    text: "A short site people come back to, with a public leaderboard.",
   },
 ] as const;
 
 const steps = [
-  "free preview first. you only pay if you like it.",
-  "live in about 7 to 10 working days.",
-  "domain and accounts in your name from day one, with a written handover list.",
-  "contact forms come with a privacy notice. small and pdpa-friendly.",
+  "Free preview first. You only pay if you like it.",
+  "Live in about 7 to 10 working days.",
+  "The domain and accounts are in your name from day one, with a written handover list.",
+  "Contact forms come with a privacy notice. Small and PDPA-friendly.",
 ];
 
 const rates = [
@@ -59,46 +68,46 @@ const terms = "50% deposit, 50% before go-live, paynow.";
 
 const faqs = [
   {
-    q: "do i own the site?",
-    a: "yes.",
+    q: "Do I own the site?",
+    a: "Yes.",
   },
   {
-    q: "what if you disappear?",
-    a: "everything's in your name plus a handover doc.",
+    q: "What if you disappear?",
+    a: "Everything's in your name plus a handover doc.",
   },
   {
-    q: "what's not included?",
-    a: "copywriting, photos, domain purchase, email, branding, ads.",
+    q: "What's not included?",
+    a: "Copywriting, photos, domain purchase, email, branding, and ads.",
   },
 ];
 
 const nav = [
-  ["work", "#work"],
-  ["about", "#about"],
-  ["process", "#process"],
-  ["pricing", "#pricing"],
-  ["faq", "#faq"],
-  ["contact", "#contact"],
+  ["Work", "#work"],
+  ["About", "#about"],
+  ["Process", "#process"],
+  ["Pricing", "#pricing"],
+  ["FAQ", "#faq"],
+  ["Contact", "#contact"],
 ] as const;
 
 export default function Home() {
   return (
     <>
       <a className="skip-link" href="#main">
-        skip to content
+        Skip to content
       </a>
-      <header className="sticky top-0 z-20 border-b border-line bg-paper/95 backdrop-blur-sm">
+      <header className="site-header sticky top-0 z-20 border-b border-white/10 bg-ink text-paper">
         <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-5 py-3 sm:px-8">
           <a href="#top" className="font-display text-lg tracking-tight">
-            anselm long
+            Anselm Long
           </a>
-          <nav aria-label="page">
+          <nav aria-label="Page">
             <ul className="flex flex-wrap gap-x-4 gap-y-1">
               {nav.map(([label, href]) => (
                 <li key={href}>
                   <a
                     href={href}
-                    className="inline-flex min-h-11 items-center text-sm underline decoration-transparent underline-offset-4 hover:decoration-ink"
+                    className="inline-flex min-h-11 items-center text-sm text-paper/90 underline decoration-transparent underline-offset-4 hover:text-paper hover:decoration-paper"
                   >
                     {label}
                   </a>
@@ -109,43 +118,55 @@ export default function Home() {
         </div>
       </header>
       <main id="main">
-        <section id="top" className="mx-auto max-w-5xl px-5 pt-16 pb-20 sm:px-8 sm:pt-24 sm:pb-28">
-          <p className="text-sm tracking-[0.14em] text-muted">singapore</p>
-          <h1 className="mt-4 max-w-3xl font-display text-5xl leading-none tracking-tight sm:text-7xl">
-            anselm long
-          </h1>
-          <p className="mt-5 text-xl sm:text-2xl">software developer in singapore</p>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed">
-            fast, custom websites for singapore small businesses. you own everything.
-          </p>
-          <div className="mt-8 flex flex-col items-start gap-3">
-            <a
-              href={mailto}
-              className="inline-flex min-h-12 items-center bg-ink px-5 text-base text-paper hover:bg-[#2c2823]"
-            >
-              contact
-            </a>
-            <a href={mailto} className="text-sm text-muted underline underline-offset-4">
-              {email}
-            </a>
+        <section id="top" className="border-b border-line bg-white">
+          <div className="mx-auto max-w-5xl px-5 py-16 sm:px-8 sm:py-24">
+            <p className="text-sm font-medium text-muted">Based in Singapore</p>
+            <h1 className="mt-4 max-w-3xl font-display text-4xl leading-tight tracking-tight sm:text-6xl">
+              Websites for small businesses
+            </h1>
+            <p className="mt-5 text-xl sm:text-2xl">Anselm Long, independent web developer</p>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed">
+              For shop owners, clinics, tutors, contractors, and F&amp;B businesses.
+            </p>
+            <ul className="mt-8 grid max-w-2xl gap-x-10 gap-y-2 sm:grid-cols-2">
+              {outcomes.map((item) => (
+                <li key={item} className="border-t border-line py-3 text-base">
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 flex flex-col items-start gap-3">
+              <a
+                href={mailto}
+                className="inline-flex min-h-12 items-center bg-ink px-5 text-base text-paper hover:bg-[#243044]"
+              >
+                Contact
+              </a>
+              <a href={mailto} className="text-sm text-muted underline underline-offset-4">
+                {email}
+              </a>
+            </div>
           </div>
         </section>
 
-        <section id="about" aria-labelledby="about-title" className="border-t border-line">
+        <section id="about" aria-labelledby="about-title">
           <div className="mx-auto grid max-w-5xl gap-4 px-5 py-16 sm:grid-cols-[11rem_1fr] sm:px-8 sm:py-20">
             <div>
               <p className="text-sm text-muted">01</p>
               <h2 id="about-title" className="mt-1 font-display text-3xl tracking-tight">
-                about
+                About
               </h2>
             </div>
             <div className="max-w-prose space-y-4 text-lg leading-relaxed">
               <p>
-                i&apos;m a computing student at nus, computer science on the ai track. i interned at
-                visa and built sage, an incident assistant. i&apos;m a software engineering intern at
-                open government products (govtech).
+                I am an independent software developer based in Singapore. I build websites for
+                small businesses and stay available after they go live.
               </p>
-              <p>i build and ship real products end to end, from payments and bots to ai features.</p>
+              <p>
+                I have done software engineering work at Visa, where I built SAGE, an incident
+                assistant, and at Open Government Products (GovTech). I have built and shipped full
+                products with payments, bookings, bots, and AI features.
+              </p>
             </div>
           </div>
         </section>
@@ -154,10 +175,10 @@ export default function Home() {
           <div className="mx-auto max-w-5xl px-5 py-16 sm:px-8 sm:py-20">
             <p className="text-sm text-muted">02</p>
             <h2 id="work-title" className="mt-1 font-display text-3xl tracking-tight">
-              selected work
+              Selected work
             </h2>
             <p className="mt-4 max-w-prose text-lg leading-relaxed">
-              a few things i&apos;ve shipped. each one is live.
+              Live products. The photography site is the closest to a typical small-business job.
             </p>
             <ul className="mt-10 grid gap-12 sm:grid-cols-2">
               {work.map((item, index) => (
@@ -171,7 +192,7 @@ export default function Home() {
                         height={1000}
                         priority={index === 0}
                         sizes="(min-width: 640px) 480px, 100vw"
-                        className="h-auto w-full border border-line"
+                        className="h-auto w-full border border-line bg-white"
                       />
                       <span className="sr-only"> (opens in a new tab)</span>
                     </a>
@@ -198,7 +219,7 @@ export default function Home() {
             <div>
               <p className="text-sm text-muted">03</p>
               <h2 id="process-title" className="mt-1 font-display text-3xl tracking-tight">
-                how it works
+                How it works
               </h2>
             </div>
             <ol className="max-w-prose list-decimal space-y-4 pl-5 text-lg leading-relaxed">
@@ -214,11 +235,11 @@ export default function Home() {
             <div>
               <p className="text-sm text-muted">04</p>
               <h2 id="pricing-title" className="mt-1 font-display text-3xl tracking-tight">
-                pricing
+                Pricing
               </h2>
             </div>
             <div className="max-w-3xl">
-              <p className="text-lg">all prices in sgd. no gst.</p>
+              <p className="text-lg">All prices are in SGD. GST is not included.</p>
               <ul className="mt-6 divide-y divide-line border-y border-line">
                 {rates.map((rate) => (
                   <li key={rate} className="py-4 text-lg leading-relaxed">
@@ -236,7 +257,7 @@ export default function Home() {
             <div>
               <p className="text-sm text-muted">05</p>
               <h2 id="faq-title" className="mt-1 font-display text-3xl tracking-tight">
-                questions
+                Questions
               </h2>
             </div>
             <div className="max-w-prose border-t border-line">
@@ -263,13 +284,13 @@ export default function Home() {
             <div>
               <p className="text-sm text-muted">06</p>
               <h2 id="contact-title" className="mt-1 font-display text-3xl tracking-tight">
-                contact
+                Contact
               </h2>
             </div>
             <div className="max-w-prose">
               <p className="text-lg leading-relaxed">
-                email is the way to reach me. tell me what the business does and what the site
-                needs to do.
+                Email is the direct way to reach me. Tell me what the business does and what you
+                need the site to do.
               </p>
               <a
                 href={mailto}
@@ -292,9 +313,9 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="border-t border-line">
+      <footer className="border-t border-line bg-white">
         <p className="mx-auto max-w-5xl px-5 py-8 text-sm text-muted sm:px-8">
-          anselm long, software developer in singapore.
+          Anselm Long, independent web developer in Singapore.
         </p>
       </footer>
     </>
