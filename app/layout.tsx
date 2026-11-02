@@ -1,16 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
+import { Bodoni_Moda, Schibsted_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const sourceSans = Source_Sans_3({
+const sans = Schibsted_Grotesk({
   subsets: ["latin"],
-  variable: "--font-source",
+  variable: "--font-sans-face",
   display: "swap",
 });
 
-const sourceSerif = Source_Serif_4({
+const display = Bodoni_Moda({
   subsets: ["latin"],
-  variable: "--font-source-serif",
+  variable: "--font-display-face",
   display: "swap",
 });
 
@@ -44,14 +44,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  colorScheme: "light",
-  themeColor: "#152033",
+  colorScheme: "dark",
+  themeColor: "#1c1612",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${sourceSans.variable} ${sourceSerif.variable} h-full`}>
-      <body className="min-h-full bg-paper text-ink antialiased">{children}</body>
+    <html lang="en" className={`${sans.variable} ${display.variable} h-full`}>
+      <body className="min-h-full bg-timber text-ivory antialiased">{children}</body>
     </html>
   );
 }

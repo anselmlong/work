@@ -1,0 +1,16 @@
+{
+  "northStar": "A timber lobby directory. One open slot shows a real site. The email is on that slot.",
+  "motion": {
+    "hero": "900ms clip reveal on the first photograph only",
+    "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+    "reducedMotion": "No animation. The photograph is fully visible."
+  },
+  "elevation": {
+    "frame": "0 16px 36px rgba(8, 5, 2, 0.45)",
+    "offerCard": "0 18px 40px rgba(8, 5, 2, 0.35)"
+  },
+  "breakpoints": {
+    "directory": "800px",
+    "facts": "1024px"
+  }
+}
