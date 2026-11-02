@@ -42,7 +42,7 @@ Name: Anselm Long. Voice: plain, confident, professional, sentence case. He is a
 
 ## Evidence on Hand
 
-Live sites already verified at HTTP 200 in this session: scallion.io, photos.anselmlong.com, massgowhere.com, kopitype.com, computah.anselmlong.com, optifiner.dev, confessit.space, bot.anselmlong.com, canvas-scraper.vercel.app, shitpost.anselmlong.com, anselmlong.com. Screenshots must be captured from those pages. Do not fabricate project UI.
+Live sites already verified at HTTP 200 in this session: scallion.io, photos.anselmlong.com, massgowhere.com, kopitype.com, computah.anselmlong.com, optifiner.dev, bot.anselmlong.com, canvas-scraper.vercel.app, anselmlong.com. Screenshots must be captured from those pages. Do not fabricate project UI.
 
 ## Product Principles
 

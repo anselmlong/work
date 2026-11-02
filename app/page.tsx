@@ -65,7 +65,7 @@ const work = [
     image: "/work/computah.webp",
     width: 1600,
     height: 1000,
-    wide: true,
+    wide: false,
     alt: "Computah site, a Mac companion with a live conversation panel",
     text: "A desktop companion that can see the screen and help with the next step, inside limits you set. It ships as a Mac app.",
   },
@@ -79,18 +79,6 @@ const work = [
     wide: false,
     alt: "Optifiner homepage with a button to launch the dashboard",
     text: "Tries many code changes at once and keeps the ones that measure better. A dashboard shows the run.",
-  },
-  {
-    name: "ConfessIT",
-    href: "https://confessit.space",
-    host: "confessit.space",
-    image: "/work/confessit.webp",
-    width: 1600,
-    height: 400,
-    wide: false,
-    natural: true,
-    alt: "ConfessIT dashboard with keyword search and sort controls",
-    text: "A public confessions board people can search and sort. The site can also write new posts in the same voice.",
   },
   {
     name: "Canvas scraper",
@@ -113,17 +101,6 @@ const work = [
     wide: true,
     alt: "A page of Telegram bots for daily readings, aircon credits, and a group counter",
     text: "Bots he runs from Singapore. One sends the day's readings at an hour you choose. One warns before aircon credits run out. One counts a number in a group chat.",
-  },
-  {
-    name: "LinkedIn posts",
-    href: "https://shitpost.anselmlong.com",
-    host: "shitpost.anselmlong.com",
-    image: "/work/posts.webp",
-    width: 1600,
-    height: 1000,
-    wide: false,
-    alt: "A small tool that drafts comedic LinkedIn posts from a topic",
-    text: "Give it a topic and it drafts six posts, from earnest to a Singapore uncle. A small tool with one job.",
   },
 ] as const;
 
@@ -172,7 +149,6 @@ function Frame({
   src,
   width,
   height,
-  natural,
   priority,
 }: {
   href: string;
@@ -180,7 +156,6 @@ function Frame({
   src: string;
   width: number;
   height: number;
-  natural?: boolean;
   priority?: boolean;
 }) {
   return (
@@ -197,9 +172,7 @@ function Frame({
         height={height}
         priority={priority}
         sizes="(min-width: 800px) 46vw, 100vw"
-        className={
-          natural ? "h-auto w-full" : "aspect-[16/10] h-auto w-full object-cover object-top"
-        }
+        className="aspect-[16/10] h-auto w-full object-cover object-top"
       />
       <span className="sr-only"> (opens in a new tab)</span>
     </a>
@@ -318,7 +291,6 @@ export default function Home() {
                       src={item.image}
                       width={item.width}
                       height={item.height}
-                      natural={"natural" in item && item.natural}
                     />
                     <div className="mt-4 sm:mt-0">
                       <h3 className="font-display text-3xl tracking-tight text-ivory">{item.name}</h3>
