@@ -14,6 +14,13 @@ export function generateStaticParams() {
   return flagships.map((project) => ({ slug: project.slug }));
 }
 
+const shareImage = {
+  url: "/opengraph-image.png",
+  width: 1200,
+  height: 630,
+  alt: "Anselm Long, independent software engineer in Singapore. Software and AI that take work off your plate: websites, custom software and AI automation.",
+};
+
 export async function generateMetadata({ params }: PageProps<"/work/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const project = findFlagship(slug);
@@ -30,13 +37,13 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
       locale: "en_SG",
       url: `/work/${project.slug}`,
       siteName: "Anselm Long",
-      images: [{ url: project.image, width: 1600, height: 1000, alt: project.alt }],
+      images: [shareImage],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description: project.summary,
-      images: [{ url: project.image, alt: project.alt }],
+      images: [shareImage],
     },
   };
 }
@@ -113,7 +120,8 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
                 alt={project.alt}
                 width={1600}
                 height={1000}
-                priority
+                loading="eager"
+                fetchPriority="high"
                 sizes="(min-width: 1344px) 1280px, 100vw"
                 className="aspect-[16/10] h-auto w-full object-cover object-top"
               />

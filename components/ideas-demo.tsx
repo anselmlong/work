@@ -142,7 +142,7 @@ export function IdeasDemo() {
             <label htmlFor={inputId} className="block text-lg font-medium">
               Your business
             </label>
-            <div className="mt-3 rounded-2xl bg-sheet p-2 text-ink shadow-[0_24px_60px_-30px_rgba(10,14,50,0.7)]">
+            <div className="demo-sheet mt-3 rounded-2xl bg-sheet p-2 text-ink shadow-[0_24px_60px_-30px_rgba(10,14,50,0.7)] has-[textarea:focus]:outline-2 has-[textarea:focus]:outline-offset-4 has-[textarea:focus]:outline-paper">
               <textarea
                 id={inputId}
                 aria-describedby={hintId}
@@ -212,8 +212,7 @@ export function IdeasDemo() {
                     style={{ "--i": index } as CSSProperties}
                     className="sheet-in flex flex-col rounded-2xl bg-sheet p-7 text-ink shadow-[0_24px_60px_-30px_rgba(10,14,50,0.7)]"
                   >
-                    <p className="tnum text-[0.95rem] text-ink-soft">Idea {index + 1} of 3</p>
-                    <h4 className="display mt-3 text-[1.75rem] leading-tight">{idea.title}</h4>
+                    <h4 className="display text-[1.75rem] leading-tight">{idea.title}</h4>
                     <dl className="mt-5 space-y-4 text-[1.05rem] leading-relaxed">
                       <div>
                         <dt className="font-medium">What it does</dt>

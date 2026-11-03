@@ -111,7 +111,8 @@ function Hero() {
                   alt={project.alt}
                   width={1600}
                   height={1000}
-                  priority
+                  loading="eager"
+                  fetchPriority={i === 0 ? "high" : "auto"}
                   sizes="(min-width: 768px) 30vw, 82vw"
                   className="aspect-[16/10] h-auto w-full object-cover object-top transition-transform duration-700 ease-[var(--ease-out)] group-hover:scale-[1.02]"
                 />
@@ -196,8 +197,8 @@ function Work() {
                 <span className="sr-only">Read the {project.name} case study</span>
               </Link>
               <div className="lg:col-span-5">
-                <p className="text-base text-ink-soft">{laneLabel[project.lane]}</p>
-                <h3 className="display mt-2 text-[2.25rem] sm:text-[2.75rem]">{project.name}</h3>
+                <h3 className="display text-[2.25rem] sm:text-[2.75rem]">{project.name}</h3>
+                <p className="mt-2 text-base text-ink-soft">{laneLabel[project.lane]}</p>
                 <p className="mt-4 max-w-[42ch]">{project.summary}</p>
                 <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2">
                   <Link
