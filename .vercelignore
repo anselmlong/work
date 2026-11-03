@@ -1,0 +1,6 @@
+.env*
+!.env.example
+.omc
+.impeccable/review
+.next
+node_modules
