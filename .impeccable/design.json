@@ -1,16 +1,18 @@
 {
-  "northStar": "A timber lobby directory. One open slot shows a real site. The email is on that slot.",
+  "northStar": "A consultant's quotation set as a light editorial page. Real exhibits, priced line items, one cobalt accent, and a live AI demo on a cobalt field.",
   "motion": {
-    "hero": "900ms clip reveal on the first photograph only",
+    "hero": "900ms rise with blur-to-sharp, 90ms stagger across headline lines, intro and exhibits",
+    "demo": "700ms sheet-in per idea, 120ms stagger",
     "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
-    "reducedMotion": "No animation. The photograph is fully visible."
+    "reducedMotion": "No animation, no smooth scroll, static loading placeholders."
   },
   "elevation": {
-    "frame": "0 16px 36px rgba(8, 5, 2, 0.45)",
-    "offerCard": "0 18px 40px rgba(8, 5, 2, 0.35)"
+    "shot": "0 1px 0 rgba(25, 23, 20, 0.06), 0 18px 40px -18px rgba(25, 23, 20, 0.35)",
+    "demoSheet": "0 24px 60px -30px rgba(10, 14, 50, 0.7)"
   },
   "breakpoints": {
-    "directory": "800px",
-    "facts": "1024px"
+    "twoUp": "640px",
+    "heroStrip": "768px",
+    "grid": "1024px"
   }
 }

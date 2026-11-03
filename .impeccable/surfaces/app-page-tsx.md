@@ -1,26 +1,31 @@
 ---
-version: 1
+version: 2
 slug: "app-page-tsx"
 primary_target: "app/page.tsx"
-related_targets: []
+related_targets: ["app/work/[slug]/page.tsx", "components/ideas-demo.tsx"]
 ---
 
-# Home
+# Home and case studies
 
 Mode: persuade
 
-Audience: middle-aged Singapore small-business owners deciding whether to email Anselm.
+Audience: managers, founders and owners of Singapore companies, mostly in their 40s and 50s, deciding whether Anselm can be trusted with software or AI work. Secondary: small-business owners who want a website.
 
-## Direction contract
+Job: leave thinking "he knows what he is doing" and send a WhatsApp message or email about a paid project.
 
-THESIS: The page is a building directory of live work, not a navy services template or a cream portfolio. The open slot is a real site, and the email is on that slot.
+Proof: three live flagships with case studies, six more live projects, the live AI demo run on the visitor's own business, Visa and Open Government Products (GovTech) experience, and a fixed rate card. No stats, testimonials or photo.
 
-OWN-WORLD: Stained timber ground (#1c1612), ivory reading plates (#f4efe6), brass (#c6a060) for the action, the rail, and links. Bodoni Moda for names, Schibsted Grotesk for reading. Screenshots sit in recessed timber frames. No eyebrows, no section numbers, no equal icon cards.
+## Direction
 
-STORY: A visitor sees a real booking site first, reads who builds it and for whom, then walks the directory, the price, and the handover terms, and emails.
+THESIS: a consultant's quotation set as a light editorial page, not a template of icon cards.
 
-FIRST VIEWPORT: A timber frame fills the width. Inside it, the photos booking screenshot owns the field. An ivory plate sits on the lower left with the offer, the name, and a brass Contact button. Six ivory fact plates sit just under the frame.
+FIRST VIEWPORT: serif headline across two thirds on the left, intro, WhatsApp action and experience line on the right, three flagship screenshots rising below and linking to case studies.
 
-FORM: Building-lobby trade directory, sixth on the resonance list (after shopfront, invoice chop, clinic card, hawker board, contractor title block). seed:d79d9f328e34a9c5. Raises kept from declined challengers: one slot fully open and monumental; a single brass rail instead of a card grid; six outcomes as separate labeled plates.
+Memorable moment: the cobalt demo field, where the visitor's own business comes back as three printed idea sheets ending in "Talk to me about this".
 
-FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance.
+FORM: quotation and letterhead, fifth on the grounded list, inside the brief-pinned light editorial world. seed:90afc338. The decision page and comps were skipped because the brief pinned the world and the build ran without a user channel.
+
+## Open
+
+- Finish review by an independent reviewer has not run yet.
+- Screenshots in public/work/ predate this redesign and carry no embedded provenance.

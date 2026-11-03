@@ -32,7 +32,7 @@ Website FAQ points stay: the client owns the site; if Anselm disappears, everyth
 
 "What could AI do for your business?" The visitor describes their business in a sentence or two (e.g. "dental clinic, 6 staff, bookings by phone"). The site returns three concrete, plain-language software or automation ideas, each with what it does, what it saves, and a rough size (small / medium / larger). It ends with "Talk to me about this" linking to WhatsApp and email with the context pre-filled.
 
-- Claude Haiku via the Anthropic API, called from a Next.js route handler. Key in `ANTHROPIC_API_KEY`.
+- Claude Haiku through OpenRouter's OpenAI-compatible chat completions endpoint, called with plain fetch from a Next.js route handler. Key in `OPENROUTER_API_KEY`; model in `OPENROUTER_MODEL`, default `anthropic/claude-haiku-4.5`.
 - Input capped (about 300 characters), output capped, per-IP rate limit, graceful error and fallback copy. No storage of what visitors type.
 
 ## Structure
