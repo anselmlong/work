@@ -19,7 +19,7 @@ export const lanes = [
   {
     id: "websites",
     name: "Websites",
-    price: "From s$490",
+    price: "From S$490",
     pitch: "A business site that looks right on a phone and brings in enquiries.",
     items: ["Business sites", "Booking flows", "Payments", "WhatsApp lead alerts"],
   },
