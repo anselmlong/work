@@ -1,8 +1,6 @@
 # Product
 
-<!-- impeccable:product-schema 1 -->
-
-Interview substitution: this session has no structured question tool and cannot wait on a decision page. Facts below are taken from the task brief and from https://anselmlong.com, not invented.
+Brief agreed with Anselm in a grilling session on 2026-11-04. It replaces the earlier small-business-only brief.
 
 ## Platform
 
@@ -10,47 +8,61 @@ web
 
 ## Users
 
-Middle-aged small business owners in Singapore: shop owners, clinics, tutors, contractors, and F&B. They are deciding whether to hire one person to build a website. They read on a phone as often as a laptop, often between customers. They want to know the price, who is accountable, and whether the work looks trustworthy.
+Primary: managers, founders and owners of small and mid-sized companies in Singapore, typically in their 40s and 50s. They want custom software, internal tools or AI automation and judge the vendor on whether he looks capable and accountable. They read on a laptop as often as a phone.
+
+Secondary: small-business owners (shops, clinics, tutors, contractors, F&B) who want an affordable website.
 
 ## Product Purpose
 
-A freelance site for Anselm Long. Success is a clear email about a real business site. The page must show that he builds complete products, not a brochure about brochures.
+A freelance portfolio for Anselm Long. A visitor should leave thinking "this person knows what he is doing" and send a message about a real project. Success is a WhatsApp message or email about a paid job.
 
-## Positioning
+## Offer
 
-One independent web developer in Singapore. Free preview first, a fixed price in SGD with no GST, the domain and accounts in the client's name from day one, and a written handover. No agency, no lock-in.
+Three service lanes, in this order:
 
-## Operating Context
+1. **Websites.** Business sites, booking flows, payments. Exact rate card below.
+2. **Custom software.** Web apps, internal tools, dashboards, bots. From S$2,500, fixed quote after a call.
+3. **AI & automation.** Assistants, document and workflow automation wired into how the business already works. From S$1,500, fixed quote after a call. Proven by the live demo on the site.
 
-Owners compare this page with a template shop and a nephew who "does websites". They need the offer, the price, and proof in one scroll. Contact is email only.
+Website rate card text stays exact: one-pager s$490; up to 5 pages s$990; monthly s$69/mo and s$129/mo with care and a 12-month minimum; care plan s$39/mo or s$390/yr; edits s$35/hr; add-ons extra page s$120, booking flow s$290, payments from s$350, WhatsApp lead-alert bot s$180. Terms: 50% deposit, 50% before go-live, PayNow. All prices SGD, GST not included.
 
-## Capabilities and Constraints
+Website FAQ points stay: the client owns the site; if Anselm disappears, everything is in their name plus a handover doc; copywriting, photos, domain purchase, email, branding and ads are not included. Contact forms come with a privacy notice, PDPA-friendly.
 
-- Contact is mailto:anselmpius@gmail.com. GitHub https://github.com/anselmlong is a public profile link. No phone number and no WhatsApp number are published.
-- Rate card text stays exact: one-pager s$490; up to 5 pages s$990; monthly s$69/mo and s$129/mo with care and a 12-month minimum; care plan s$39/mo or s$390/yr; edits s$35/hr; add-ons extra page s$120, booking flow s$290, payments from s$350, WhatsApp lead-alert bot s$180. Terms line: 50% deposit, 50% before go-live, paynow.
-- FAQ points stay: the client owns the site; if Anselm disappears, everything is in their name plus a handover doc; copywriting, photos, domain purchase, email, branding, and ads are not included.
-- Contact forms he builds come with a privacy notice. Small and PDPA-friendly.
-- Do not say he is a student. Do not invent years, client counts, testimonials, or stats.
-- No em dashes. No hype words.
-- Keep Scallion, Photos, MassGoWhere, and Kopitype. Add other live projects from anselmlong.com only when the link returns HTTP 200. Exclude Fiat and Better EduRec.
-- Site URL: https://work.anselmlong.com
-- Stack: Next.js App Router, Tailwind, TypeScript. Static. No analytics. No custom-domain config in the repo.
+## Signature feature: live AI demo
+
+"What could AI do for your business?" The visitor describes their business in a sentence or two (e.g. "dental clinic, 6 staff, bookings by phone"). The site returns three concrete, plain-language software or automation ideas, each with what it does, what it saves, and a rough size (small / medium / larger). It ends with "Talk to me about this" linking to WhatsApp and email with the context pre-filled.
+
+- Claude Haiku via the Anthropic API, called from a Next.js route handler. Key in `ANTHROPIC_API_KEY`.
+- Input capped (about 300 characters), output capped, per-IP rate limit, graceful error and fallback copy. No storage of what visitors type.
+
+## Structure
+
+- Home page: hero, three service lanes, live demo, selected work, how I work, pricing, about, FAQ, contact.
+- Case study pages for three flagships: Photos booking site (photos.anselmlong.com), Scallion (scallion.io), MassGoWhere (massgowhere.com). Each: the problem, what was built, how it works, what it enables. Real screenshots only. No invented numbers.
+- Other live work as a compact list: Kopitype, Computah, Optifiner, Canvas scraper, Telegram bots, anselmlong.com.
+
+## Contact
+
+- WhatsApp: wa.me/6588536376 button with a pre-filled greeting. The number is not printed as text.
+- Email: mailto:anselmpius@gmail.com.
+- GitHub https://github.com/anselmlong.
+- No Ko-fi link on this site.
 
 ## Brand Commitments
 
-Name: Anselm Long. Voice: plain, confident, professional, sentence case. He is an independent software developer and web developer based in Singapore. Experience that may be stated: software engineering work at Visa (built SAGE, an incident assistant) and at Open Government Products (GovTech); he has built and shipped full products with payments, bookings, bots, and AI features.
+Name: Anselm Long. Independent software engineer in Singapore. Voice: plain, confident, professional, sentence case, first person "I". Experience that may be stated: software engineering at Visa and at Open Government Products (GovTech). Do not name SAGE. No photo of Anselm. Headline is outcome-led, e.g. "Software and AI that take work off your plate."
 
-## Evidence on Hand
+## Hard rules
 
-Live sites already verified at HTTP 200 in this session: scallion.io, photos.anselmlong.com, massgowhere.com, kopitype.com, computah.anselmlong.com, optifiner.dev, bot.anselmlong.com, canvas-scraper.vercel.app, anselmlong.com. Screenshots must be captured from those pages. Do not fabricate project UI.
+- Do not say he is a student. Do not invent years, client counts, testimonials, results or stats.
+- No em dashes. No hype words.
+- Vercel Analytics allowed. One server route for the demo allowed. Everything else static.
+- Site URL: https://work.anselmlong.com. Stack: Next.js App Router, Tailwind, TypeScript.
 
-## Product Principles
+## Design direction
 
-- The work is the proof. Show the sites, then the price.
-- One person, one price, the client's name on the accounts.
-- Credible to a clinic owner and a contractor, not only to other developers.
-- Fast and readable. Motion never blocks the content.
+Fresh design, not the old timber/brass look. Light editorial: warm off-white, strong serif display headlines, a clean sans for body, generous whitespace, one confident accent colour. Premium consultancy feel. Restrained motion that never blocks content. Large readable body text for older eyes.
 
-## Accessibility & Inclusion
+## Accessibility
 
-WCAG AA contrast. Visible focus. Keyboard access. prefers-reduced-motion keeps content fully visible. Touch targets at least 44px. Works at 390px and 1280px.
+WCAG AA contrast. Visible focus. Keyboard access. prefers-reduced-motion respected. Touch targets at least 44px. Works at 390px and 1280px.
