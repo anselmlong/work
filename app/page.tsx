@@ -60,7 +60,7 @@ function Hero() {
   return (
     <section aria-labelledby="hero-title" className="overflow-hidden">
       <div className="mx-auto max-w-[84rem] px-4 pt-14 sm:px-8 sm:pt-20 lg:pt-24">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-8">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-8">
           <h1
             id="hero-title"
             className="display text-[3.1rem] sm:text-[4.75rem] lg:col-span-8 lg:text-[6rem]"
@@ -71,7 +71,7 @@ function Hero() {
               </span>
             ))}
           </h1>
-          <div className="rise lg:col-span-4 lg:pb-3" style={{ "--i": 3 } as CSSProperties}>
+          <div className="rise lg:col-span-4 lg:pt-5" style={{ "--i": 3 } as CSSProperties}>
             <p className="max-w-[40ch] text-[1.25rem] leading-relaxed">
               I&apos;m Anselm Long, an independent software engineer in Singapore. I build websites,
               custom software and AI automation for companies that would rather spend their time on
