@@ -208,7 +208,7 @@ export function IdeasDemo() {
               <ol className="grid gap-5 md:grid-cols-3">
                 {state.ideas.map((idea, index) => (
                   <li
-                    key={idea.title}
+                    key={index}
                     style={{ "--i": index } as CSSProperties}
                     className="sheet-in flex flex-col rounded-2xl bg-sheet p-7 text-ink shadow-[0_24px_60px_-30px_rgba(10,14,50,0.7)]"
                   >

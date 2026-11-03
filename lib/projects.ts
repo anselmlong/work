@@ -61,7 +61,7 @@ export const projects: readonly Project[] = [
     image: "/work/scallion.webp",
     alt: "Scallion start screen, a pixel-art city at dusk with a button to begin the climb",
     summary:
-      "A daily word game people pay to use, with group rooms, a paid tier and an admin side.",
+      "A daily word game people come back to, with group rooms and an admin side.",
     lane: "software",
     caseStudy: {
       problem:
@@ -70,7 +70,7 @@ export const projects: readonly Project[] = [
         "A daily climb of short prompts against a timer, the same set for everybody.",
         "Scoring where common answers barely move and rare answers lift your lantern higher, with one hidden best answer per prompt.",
         "A pixel-art Asian skyline to climb, from HDB rooftops to the clouds.",
-        "Party rooms for playing with a group, and a paid unlimited tier.",
+        "Party rooms for playing with a group.",
         "An admin side for running the game day to day.",
       ],
       howItWorks: [
@@ -80,7 +80,7 @@ export const projects: readonly Project[] = [
         "It is a Next.js app, built to be played on a phone.",
       ],
       enables:
-        "A complete product, not a brochure: people play it daily, play it together and pay for more of it. The same pieces (payments, shared rooms, an admin view) are what most custom software needs.",
+        "A complete product, not a brochure: people play it daily and play it together. The same pieces (accounts, shared rooms, an admin view) are what most custom software needs.",
     },
   },
   {

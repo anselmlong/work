@@ -48,7 +48,7 @@ const limits = { title: 80, does: 300, saves: 220 } as const;
 
 function cleanText(value: unknown, max: number): string | null {
   if (typeof value !== "string") return null;
-  const text = value.replace(/\s*[\u2013\u2014]\s*/g, ", ").replace(/\s+/g, " ").trim();
+  const text = value.replace(/(\d)\s*\u2013\s*(\d)/g, "$1 to $2").replace(/\s*[\u2013\u2014]\s*/g, ", ").replace(/\s+/g, " ").trim();
   if (text.length === 0 || text.length > max) return null;
   return text;
 }

@@ -14,14 +14,16 @@ function rateLimited(ip: string, now: number): boolean {
   hits.set(ip, recent);
   if (hits.size > 5_000) {
     for (const [key, times] of hits) {
-      if (times.every((t) => now - t >= windowMs)) hits.delete(key);
+      if (hits.size <= 4_000) break;
+      if (times.every((t) => now - t >= windowMs) || hits.size > 5_000) hits.delete(key);
     }
   }
   return false;
 }
 
 function clientIp(request: Request): string {
-  const forwarded = request.headers.get("x-forwarded-for");
+  const forwarded =
+    request.headers.get("x-vercel-forwarded-for") ?? request.headers.get("x-forwarded-for");
   return forwarded?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "unknown";
 }
 

@@ -354,7 +354,7 @@ function About() {
           </p>
           <p className="mt-8 max-w-[60ch] text-ink-soft">
             I have done software engineering at Visa and at Open Government Products (GovTech).
-            The work on this page, from booking flows to a daily game people pay to play, is what I
+            The work on this page, from booking flows to a daily word game, is what I
             build now.
           </p>
           <dl className="mt-10 grid gap-6 border-t border-ink pt-6 sm:grid-cols-2">
