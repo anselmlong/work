@@ -8,6 +8,8 @@ import { ArrowIcon, OutIcon } from "@/components/icons";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { findFlagship, flagships } from "@/lib/projects";
 
+export const ensureStatic = "navigation";
+
 export function generateStaticParams() {
   return flagships.map((project) => ({ slug: project.slug }));
 }
