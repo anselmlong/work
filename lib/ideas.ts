@@ -24,7 +24,7 @@ export function parseDescription(input: unknown): DescriptionResult {
     return { ok: false, error: "Add a few more words about your business." };
   }
   if (description.length > maxLength) {
-    return { ok: false, error: `Keep it under ${maxLength} characters.` };
+    return { ok: false, error: `Keep it to ${maxLength} characters or fewer.` };
   }
   return { ok: true, description };
 }
@@ -40,7 +40,7 @@ Rules:
 - does: one or two sentences on what it does, at most 35 words.
 - saves: one sentence on the time, effort or mistakes it saves, at most 25 words.
 - size: "small" (a week or two), "medium" (a few weeks) or "larger" (a bigger project).
-- Do not give prices, percentages, hours or any other specific figures.
+- Do not give prices, percentages, hours or any other specific figures, and do not claim amounts such as "in half" or "double". Describe the saving in plain words.
 - Do not use em dashes. Do not use hype words such as revolutionary, seamless, cutting-edge, game-changing, supercharge or unlock.
 - If the description is not a business, suggest ideas for the closest reasonable small business.`;
 
@@ -48,7 +48,7 @@ const limits = { title: 80, does: 300, saves: 220 } as const;
 
 function cleanText(value: unknown, max: number): string | null {
   if (typeof value !== "string") return null;
-  const text = value.replace(/\s*[—–]\s*/g, ", ").replace(/\s+/g, " ").trim();
+  const text = value.replace(/\s*[\u2013\u2014]\s*/g, ", ").replace(/\s+/g, " ").trim();
   if (text.length === 0 || text.length > max) return null;
   return text;
 }
