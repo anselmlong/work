@@ -1,409 +1,419 @@
 import Image from "next/image";
+import Link from "next/link";
+import type { CSSProperties } from "react";
+import { ContactSection } from "@/components/contact-section";
+import { ArrowIcon, OutIcon } from "@/components/icons";
+import { IdeasDemo } from "@/components/ideas-demo";
+import { SiteFooter, SiteHeader, WhatsAppButton } from "@/components/site-chrome";
+import { flagships, otherWork } from "@/lib/projects";
+import { lanes, rates, terms, type LaneId } from "@/lib/site";
 
-const email = "anselmpius@gmail.com";
-const mailto = `mailto:${email}`;
-const github = "https://github.com/anselmlong";
-
-const outcomes = [
-  "More enquiries and bookings",
-  "Looks trustworthy on a phone",
-  "Fast to load",
-  "You own it, with no lock-in",
-  "A clear fixed price",
-  "One person accountable",
-];
-
-const work = [
-  {
-    name: "anselmlong.com",
-    href: "https://anselmlong.com",
-    host: "anselmlong.com",
-    image: "/work/personal.webp",
-    width: 1600,
-    height: 1000,
-    wide: true,
-    alt: "Anselm Long's own site, with his name set over a photograph of the Golden Gate Bridge",
-    text: "His own site: the work, the writing, and a way to ask a question. Built as a full site, not a single card.",
-  },
-  {
-    name: "Scallion",
-    href: "https://scallion.io",
-    host: "scallion.io",
-    image: "/work/scallion.webp",
-    width: 1600,
-    height: 1000,
-    wide: false,
-    alt: "Scallion start screen, a pixel-art city at dusk with a button to begin the climb",
-    text: "A complete product people pay to use, with group rooms and an admin side. More than a brochure.",
-  },
-  {
-    name: "MassGoWhere",
-    href: "https://massgowhere.com",
-    host: "massgowhere.com",
-    image: "/work/massgowhere.webp",
-    width: 1600,
-    height: 1000,
-    wide: false,
-    alt: "MassGoWhere home screen with choices for a Mass, adoration, or confession",
-    text: "Helps someone find a Mass they can still reach in Singapore, by train, car, or on foot, and when to leave. A Telegram bot sits beside the site.",
-  },
-  {
-    name: "Kopitype",
-    href: "https://kopitype.com",
-    host: "kopitype.com",
-    image: "/work/kopitype.webp",
-    width: 1600,
-    height: 1000,
-    wide: false,
-    alt: "Kopitype in the middle of a Singlish typing test, timer at 30 seconds",
-    text: "A short site people come back to, with a public leaderboard. Built around Singapore English, stations, and local phrases.",
-  },
-  {
-    name: "Computah",
-    href: "https://computah.anselmlong.com",
-    host: "computah.anselmlong.com",
-    image: "/work/computah.webp",
-    width: 1600,
-    height: 1000,
-    wide: false,
-    alt: "Computah site, a Mac companion with a live conversation panel",
-    text: "A desktop companion that can see the screen and help with the next step, inside limits you set. It ships as a Mac app.",
-  },
-  {
-    name: "Optifiner",
-    href: "https://optifiner.dev",
-    host: "optifiner.dev",
-    image: "/work/optifiner.webp",
-    width: 1600,
-    height: 1000,
-    wide: false,
-    alt: "Optifiner homepage with a button to launch the dashboard",
-    text: "Tries many code changes at once and keeps the ones that measure better. A dashboard shows the run.",
-  },
-  {
-    name: "Canvas scraper",
-    href: "https://canvas-scraper.vercel.app",
-    host: "canvas-scraper.vercel.app",
-    image: "/work/canvas.webp",
-    width: 1600,
-    height: 1000,
-    wide: false,
-    alt: "Canvas scraper page explaining a daily file sync that skips large recordings",
-    text: "Pulls new course files to a laptop, skips the huge recordings, and emails what changed. It runs every day at noon.",
-  },
-  {
-    name: "Telegram bots",
-    href: "https://bot.anselmlong.com",
-    host: "bot.anselmlong.com",
-    image: "/work/bots.webp",
-    width: 1600,
-    height: 1000,
-    wide: true,
-    alt: "A page of Telegram bots for daily readings, aircon credits, and a group counter",
-    text: "Bots he runs from Singapore. One sends the day's readings at an hour you choose. One warns before aircon credits run out. One counts a number in a group chat.",
-  },
-] as const;
+const laneLabel: Record<LaneId, string> = {
+  websites: "Website",
+  software: "Custom software",
+  ai: "AI & automation",
+};
 
 const steps = [
-  "Free preview first. You only pay if you like it.",
-  "Live in about 7 to 10 working days.",
-  "The domain and accounts are in your name from day one, with a written handover list.",
-  "Contact forms come with a privacy notice. Small and PDPA-friendly.",
+  {
+    title: "A call first",
+    text: "We talk through how the work gets done today and where the time goes. You do not need a spec.",
+  },
+  {
+    title: "A fixed quote",
+    text: "You get a written scope and a fixed price before anything is built. Websites follow the rate card below.",
+  },
+  {
+    title: "Working versions early",
+    text: "You see the real thing as it comes together and steer it, instead of waiting for a reveal at the end.",
+  },
+  {
+    title: "Yours to keep",
+    text: "The domain, the accounts and the code are in your name, with a written handover.",
+  },
 ];
-
-const rates = [
-  "one-pager: s$490",
-  "up to 5 pages: s$990",
-  "monthly, no upfront: s$69/mo one-pager, s$129/mo up to 5 pages, care included, 12-month minimum",
-  "care plan for one-off builds: s$39/mo or s$390/yr (hosting, ssl, backups, 30 min of edits a month)",
-  "edits outside a plan: s$35/hr",
-  "add-ons: extra page s$120, booking flow s$290, payments from s$350, whatsapp lead-alert bot s$180",
-];
-
-const terms = "50% deposit, 50% before go-live, paynow.";
 
 const faqs = [
   { q: "Do I own the site?", a: "Yes." },
+  { q: "What if you disappear?", a: "Everything's in your name plus a handover doc." },
+  { q: "What's not included?", a: "Copywriting, photos, domain purchase, email, branding, and ads." },
   {
-    q: "What if you disappear?",
-    a: "Everything's in your name plus a handover doc.",
+    q: "Do contact forms handle personal data properly?",
+    a: "Contact forms come with a privacy notice. Small and PDPA-friendly.",
   },
   {
-    q: "What's not included?",
-    a: "Copywriting, photos, domain purchase, email, branding, and ads.",
+    q: "How are custom software and AI projects priced?",
+    a: "After a call I send a fixed quote. Custom software starts from S$2,500, and AI and automation from S$1,500.",
+  },
+  {
+    q: "What happens to what I type into the AI demo?",
+    a: "It is sent to an AI model through OpenRouter to write the ideas. This site does not store or log it.",
   },
 ];
 
-const nav = [
-  ["Work", "#work"],
-  ["About", "#about"],
-  ["Process", "#process"],
-  ["Pricing", "#pricing"],
-  ["FAQ", "#faq"],
-  ["Contact", "#contact"],
-] as const;
+function splitRate(rate: string) {
+  const at = rate.indexOf(": ");
+  return { label: rate.slice(0, at), value: rate.slice(at + 2) };
+}
 
-function Frame({
-  href,
-  alt,
-  src,
-  width,
-  height,
-  priority,
-}: {
-  href: string;
-  alt: string;
-  src: string;
-  width: number;
-  height: number;
-  priority?: boolean;
-}) {
+function Hero() {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block bg-[#140f0c] p-1.5 shadow-[0_16px_36px_rgba(8,5,2,0.45)] sm:p-2"
-    >
-      <Image
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        priority={priority}
-        sizes="(min-width: 800px) 46vw, 100vw"
-        className="aspect-[16/10] h-auto w-full object-cover object-top"
-      />
-      <span className="sr-only"> (opens in a new tab)</span>
-    </a>
+    <section aria-labelledby="hero-title" className="overflow-hidden">
+      <div className="mx-auto max-w-[84rem] px-4 pt-14 sm:px-8 sm:pt-20 lg:pt-24">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-8">
+          <h1
+            id="hero-title"
+            className="display text-[3.1rem] sm:text-[4.75rem] lg:col-span-8 lg:text-[6rem]"
+          >
+            {["Software and AI", "that take work", "off your plate."].map((line, i) => (
+              <span key={line} className="rise block" style={{ "--i": i } as CSSProperties}>
+                {line}
+              </span>
+            ))}
+          </h1>
+          <div className="rise lg:col-span-4 lg:pb-3" style={{ "--i": 3 } as CSSProperties}>
+            <p className="max-w-[40ch] text-[1.25rem] leading-relaxed">
+              I&apos;m Anselm Long, an independent software engineer in Singapore. I build websites,
+              custom software and AI automation for companies that would rather spend their time on
+              the business.
+            </p>
+            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <WhatsAppButton label="Message me on WhatsApp" size="lg" />
+              <Link
+                href="#demo"
+                className="inline-flex min-h-11 items-center gap-2 font-medium text-cobalt underline decoration-cobalt/40 hover:decoration-cobalt"
+              >
+                Try the AI demo
+                <ArrowIcon />
+              </Link>
+            </div>
+            <p className="mt-8 max-w-[40ch] border-t border-rule pt-5 text-base text-ink-soft">
+              Software engineering experience at Visa and at Open Government Products (GovTech).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <ul
+        aria-label="Recent work"
+        className="mx-auto mt-16 flex max-w-[84rem] snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-6 sm:mt-20 sm:px-8 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible"
+      >
+        {flagships.map((project, i) => (
+          <li
+            key={project.slug}
+            className="rise w-[82%] shrink-0 snap-start md:w-auto"
+            style={{ "--i": 4 + i } as CSSProperties}
+          >
+            <Link href={`/work/${project.slug}`} className="group block">
+              <span className="shot block overflow-hidden rounded-lg bg-paper-deep">
+                <Image
+                  src={project.image}
+                  alt={project.alt}
+                  width={1600}
+                  height={1000}
+                  priority
+                  sizes="(min-width: 768px) 30vw, 82vw"
+                  className="aspect-[16/10] h-auto w-full object-cover object-top transition-transform duration-700 ease-[var(--ease-out)] group-hover:scale-[1.02]"
+                />
+              </span>
+              <span className="mt-4 flex items-baseline justify-between gap-4">
+                <span className="text-lg font-medium">{project.name}</span>
+                <span className="inline-flex items-center gap-1.5 text-base text-ink-soft group-hover:text-cobalt">
+                  Case study
+                  <ArrowIcon />
+                </span>
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function Services() {
+  return (
+    <section id="services" aria-labelledby="services-title" className="mx-auto max-w-[84rem] px-4 py-24 sm:px-8 sm:py-32">
+      <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
+        <h2 id="services-title" className="display text-[2.5rem] sm:text-[3.5rem] lg:col-span-5">
+          Three kinds of work, one person accountable.
+        </h2>
+        <p className="max-w-[48ch] text-ink-soft lg:col-span-6 lg:col-start-7 lg:self-end">
+          Start with a website, or go straight to the part of the business that eats the most hours.
+          Each job is quoted at a fixed price before it begins.
+        </p>
+      </div>
+      <ol className="mt-14 border-t border-ink">
+        {lanes.map((lane) => (
+          <li key={lane.id} className="grid gap-4 border-b border-rule py-9 md:grid-cols-12 md:gap-8">
+            <h3 className="display text-[2rem] sm:text-[2.4rem] md:col-span-4">{lane.name}</h3>
+            <div className="md:col-span-5">
+              <p className="max-w-[44ch]">{lane.pitch}</p>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {lane.items.map((item) => (
+                  <li key={item} className="rounded-full bg-paper-deep px-3 py-1 text-[0.95rem] text-ink-soft">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <p className="tnum display text-[1.6rem] md:col-span-3 md:text-right">{lane.price}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
+function Work() {
+  return (
+    <section id="work" aria-labelledby="work-title" className="mx-auto max-w-[84rem] px-4 py-24 sm:px-8 sm:py-32">
+      <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
+        <h2 id="work-title" className="display text-[2.5rem] sm:text-[3.5rem] lg:col-span-6">
+          Selected work
+        </h2>
+        <p className="max-w-[48ch] text-ink-soft lg:col-span-6 lg:col-start-7 lg:self-end">
+          Everything here is live and in use. Open the site and try it, or read how it was built.
+        </p>
+      </div>
+
+      <ul className="mt-16 space-y-24 sm:space-y-32">
+        {flagships.map((project, i) => (
+          <li key={project.slug}>
+            <article className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
+              <Link
+                href={`/work/${project.slug}`}
+                className={`shot block overflow-hidden rounded-xl bg-paper-deep lg:col-span-7 ${i % 2 ? "lg:order-2" : ""}`}
+              >
+                <Image
+                  src={project.image}
+                  alt={project.alt}
+                  width={1600}
+                  height={1000}
+                  sizes="(min-width: 1024px) 56vw, 100vw"
+                  className="aspect-[16/10] h-auto w-full object-cover object-top"
+                />
+                <span className="sr-only">Read the {project.name} case study</span>
+              </Link>
+              <div className="lg:col-span-5">
+                <p className="text-base text-ink-soft">{laneLabel[project.lane]}</p>
+                <h3 className="display mt-2 text-[2.25rem] sm:text-[2.75rem]">{project.name}</h3>
+                <p className="mt-4 max-w-[42ch]">{project.summary}</p>
+                <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2">
+                  <Link
+                    href={`/work/${project.slug}`}
+                    className="inline-flex min-h-12 items-center gap-2 rounded-full bg-ink px-5 font-medium text-paper transition-colors hover:bg-cobalt"
+                  >
+                    Read the case study
+                    <ArrowIcon />
+                  </Link>
+                  <a
+                    href={project.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center gap-1.5 text-ink-soft underline hover:text-ink"
+                  >
+                    {project.host}
+                    <OutIcon />
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-28 grid gap-8 lg:grid-cols-12 lg:gap-8">
+        <h3 className="display text-[2rem] sm:text-[2.4rem] lg:col-span-4">More live work</h3>
+        <ul className="border-t border-ink lg:col-span-8">
+          {otherWork.map((project) => (
+            <li key={project.slug} className="border-b border-rule">
+              <a
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group grid grid-cols-[5.5rem_1fr] items-center gap-5 py-5 sm:grid-cols-[8rem_1fr_auto] sm:gap-7"
+              >
+                <Image
+                  src={project.image}
+                  alt=""
+                  width={1600}
+                  height={1000}
+                  sizes="8rem"
+                  className="aspect-[16/10] h-auto w-full rounded-md object-cover object-top ring-1 ring-rule"
+                />
+                <span>
+                  <span className="flex flex-wrap items-baseline gap-x-3">
+                    <span className="text-[1.2rem] font-medium group-hover:text-cobalt">{project.name}</span>
+                    <span className="text-[0.95rem] text-ink-soft">{laneLabel[project.lane]}</span>
+                  </span>
+                  <span className="mt-1 block text-[1.05rem] leading-relaxed text-ink-soft">{project.summary}</span>
+                </span>
+                <span className="col-start-2 inline-flex items-center gap-1.5 text-[0.95rem] text-ink-soft underline group-hover:text-ink sm:col-start-auto">
+                  {project.host}
+                  <OutIcon />
+                </span>
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function Process() {
+  return (
+    <section id="process" aria-labelledby="process-title" className="bg-paper-deep">
+      <div className="mx-auto max-w-[84rem] px-4 py-24 sm:px-8 sm:py-32">
+        <h2 id="process-title" className="display text-[2.5rem] sm:text-[3.5rem]">
+          How I work
+        </h2>
+        <ol className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          {steps.map((step, i) => (
+            <li key={step.title} className="border-t border-ink pt-6">
+              <span className="tnum display text-[1.5rem] text-cobalt" aria-hidden="true">
+                {i + 1}
+              </span>
+              <h3 className="mt-3 text-[1.3rem] font-medium">{step.title}</h3>
+              <p className="mt-3 text-ink-soft">{step.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+function Pricing() {
+  const fromPrices = lanes.filter((lane) => lane.id !== "websites");
+  return (
+    <section id="pricing" aria-labelledby="pricing-title" className="mx-auto max-w-[84rem] px-4 py-24 sm:px-8 sm:py-32">
+      <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
+        <h2 id="pricing-title" className="display text-[2.5rem] sm:text-[3.5rem] lg:col-span-6">
+          Pricing
+        </h2>
+        <p className="max-w-[48ch] text-ink-soft lg:col-span-6 lg:col-start-7 lg:self-end">
+          Websites have a fixed rate card. Software and AI work starts from a set price and gets a
+          fixed quote once we have talked it through.
+        </p>
+      </div>
+
+      <div className="shot mt-14 rounded-2xl bg-sheet px-5 py-8 sm:px-10 sm:py-12 lg:px-14">
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-8">
+            <h3 className="display text-[1.9rem]">Websites</h3>
+            <dl className="tnum mt-6 border-t border-ink">
+              {rates.map((rate) => {
+                const { label, value } = splitRate(rate);
+                return (
+                  <div key={rate} className="grid gap-1 border-b border-rule py-4 sm:grid-cols-[13rem_1fr] sm:gap-6">
+                    <dt className="font-medium">{label}:</dt>
+                    <dd className="text-ink-soft sm:text-ink">{value}</dd>
+                  </div>
+                );
+              })}
+            </dl>
+            <p className="tnum mt-6">{terms}</p>
+          </div>
+          <div className="lg:col-span-4 lg:border-l lg:border-rule lg:pl-12">
+            <h3 className="display text-[1.9rem]">Software and AI</h3>
+            <dl className="mt-6 border-t border-ink">
+              {fromPrices.map((lane) => (
+                <div key={lane.id} className="border-b border-rule py-5">
+                  <dt className="font-medium">{lane.name}</dt>
+                  <dd className="tnum display mt-1 text-[2rem] text-cobalt">{lane.price}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-6 text-ink-soft">Fixed quote after a call.</p>
+          </div>
+        </div>
+        <p className="mt-12 border-t border-rule pt-6 text-base text-ink-soft">
+          All prices are in SGD. GST is not included.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function About() {
+  return (
+    <section id="about" aria-labelledby="about-title" className="border-t border-rule">
+      <div className="mx-auto grid max-w-[84rem] gap-10 px-4 py-24 sm:px-8 sm:py-32 lg:grid-cols-12 lg:gap-8">
+        <h2 id="about-title" className="display text-[2.5rem] sm:text-[3.5rem] lg:col-span-5">
+          About
+        </h2>
+        <div className="lg:col-span-7">
+          <p className="display text-[1.75rem] leading-snug sm:text-[2.1rem]">
+            I build software for businesses directly, from the first call to the handover. You deal
+            with one person, who writes the code and answers the messages.
+          </p>
+          <p className="mt-8 max-w-[60ch] text-ink-soft">
+            I have done software engineering at Visa and at Open Government Products (GovTech).
+            The work on this page, from booking flows to a daily game people pay to play, is what I
+            build now.
+          </p>
+          <dl className="mt-10 grid gap-6 border-t border-ink pt-6 sm:grid-cols-2">
+            <div>
+              <dt className="text-base text-ink-soft">Software engineering</dt>
+              <dd className="mt-1 text-[1.3rem] font-medium">Visa</dd>
+            </div>
+            <div>
+              <dt className="text-base text-ink-soft">Software engineering</dt>
+              <dd className="mt-1 text-[1.3rem] font-medium">Open Government Products (GovTech)</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Faq() {
+  return (
+    <section id="faq" aria-labelledby="faq-title" className="border-t border-rule">
+      <div className="mx-auto grid max-w-[84rem] gap-10 px-4 py-24 sm:px-8 sm:py-32 lg:grid-cols-12 lg:gap-8">
+        <h2 id="faq-title" className="display text-[2.5rem] sm:text-[3.5rem] lg:col-span-5">
+          Questions
+        </h2>
+        <div className="border-t border-ink lg:col-span-7">
+          {faqs.map((item) => (
+            <details key={item.q} className="group border-b border-rule">
+              <summary className="flex min-h-16 cursor-pointer items-center justify-between gap-6 py-4 text-[1.2rem] font-medium hover:text-cobalt">
+                <span>{item.q}</span>
+                <span
+                  aria-hidden="true"
+                  className="relative size-4 shrink-0 before:absolute before:inset-x-0 before:top-1/2 before:h-px before:bg-current after:absolute after:inset-y-0 after:left-1/2 after:w-px after:bg-current after:transition-transform group-open:after:scale-y-0"
+                />
+              </summary>
+              <p className="max-w-[60ch] pb-6 text-ink-soft">{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
 export default function Home() {
   return (
     <>
-      <a className="skip-link" href="#main">
-        Skip to content
-      </a>
-      <header className="sticky top-0 z-20 border-b border-brass/40 bg-timber/95 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-1 px-5 py-3 sm:px-8">
-          <a href="#top" className="font-display text-xl tracking-tight text-ivory">
-            Anselm Long
-          </a>
-          <nav aria-label="Page">
-            <ul className="flex flex-wrap gap-x-4 gap-y-1">
-              {nav.map(([label, href]) => (
-                <li key={href}>
-                  <a
-                    href={href}
-                    className="inline-flex min-h-11 items-center text-sm text-ivory/90 underline decoration-transparent underline-offset-4 hover:text-ivory hover:decoration-brass"
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-      </header>
+      <SiteHeader />
       <main id="main">
-        <section id="top" className="px-4 pt-4 sm:px-8 sm:pt-6">
-          <div className="relative mx-auto max-w-6xl bg-[#140f0c] p-2 shadow-[0_22px_50px_rgba(8,5,2,0.5)] sm:p-3">
-            <a href="https://photos.anselmlong.com" target="_blank" rel="noopener noreferrer" className="block">
-              <Image
-                src="/work/photos.webp"
-                alt="Booking form on the photos site, asking for event details before a quote"
-                width={1600}
-                height={1000}
-                priority
-                sizes="100vw"
-                className="hero-shot"
-              />
-              <span className="sr-only"> (opens in a new tab)</span>
-            </a>
-            <div className="bg-ivory px-5 py-6 text-ink sm:absolute sm:bottom-6 sm:left-6 sm:w-[min(26rem,42%)] sm:px-6 sm:py-6 sm:shadow-[0_18px_40px_rgba(8,5,2,0.35)]">
-              <h1 className="font-display text-[2.6rem] leading-[0.95] tracking-tight sm:text-5xl">
-                Websites for small businesses
-              </h1>
-              <p className="mt-4 text-lg leading-snug">
-                Anselm Long, independent web developer in Singapore.
-              </p>
-              <p className="mt-3 text-base leading-relaxed text-muted">
-                For shop owners, clinics, tutors, contractors, and F&amp;B businesses.
-              </p>
-              <div className="mt-5 flex flex-col items-start gap-2">
-                <a
-                  href={mailto}
-                  className="inline-flex min-h-12 items-center bg-brass px-5 font-medium text-timber hover:bg-[#d8b778]"
-                >
-                  Contact
-                </a>
-                <a href={mailto} className="text-sm text-muted underline underline-offset-4">
-                  {email}
-                </a>
-              </div>
-            </div>
-          </div>
-          <ul className="mx-auto mt-4 grid max-w-6xl gap-2 sm:grid-cols-2 lg:grid-cols-3">
-            {outcomes.map((item) => (
-              <li key={item} className="bg-ivory px-4 py-3 text-base text-ink">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section id="about" aria-labelledby="about-title" className="px-4 py-16 sm:px-8 sm:py-24">
-          <div className="mx-auto grid max-w-6xl gap-8 bg-ivory px-6 py-10 text-ink sm:px-10 sm:py-14 lg:grid-cols-[16rem_1fr]">
-            <h2 id="about-title" className="font-display text-4xl tracking-tight">
-              About
-            </h2>
-            <div className="max-w-[68ch] space-y-4 text-lg leading-relaxed">
-              <p>
-                I am an independent software developer based in Singapore. I build websites for
-                small businesses and stay available after they go live.
-              </p>
-              <p>
-                I have done software engineering work at Visa, where I built SAGE, an incident
-                assistant, and at Open Government Products (GovTech). I have built and shipped full
-                products with payments, bookings, bots, and AI features.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section id="work" aria-labelledby="work-title" className="px-4 pb-8 sm:px-8">
-          <div className="mx-auto max-w-6xl border-l border-brass/70 pl-5 sm:pl-8">
-            <h2 id="work-title" className="font-display text-4xl tracking-tight text-ivory sm:text-5xl">
-              Selected work
-            </h2>
-            <p className="mt-4 max-w-[62ch] text-lg leading-relaxed text-ivory/80">
-              Live sites. The photograph above is the closest to a typical small-business job: a
-              booking form that becomes a quote and a PDF.
-            </p>
-            <ul className="mt-12 grid gap-14 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-16">
-              {work.map((item) => (
-                <li key={item.href} className={item.wide ? "sm:col-span-2" : ""}>
-                  <article className={item.wide ? "sm:grid sm:grid-cols-[1.35fr_0.8fr] sm:items-end sm:gap-8" : ""}>
-                    <Frame
-                      href={item.href}
-                      alt={item.alt}
-                      src={item.image}
-                      width={item.width}
-                      height={item.height}
-                    />
-                    <div className="mt-4 sm:mt-0">
-                      <h3 className="font-display text-3xl tracking-tight text-ivory">{item.name}</h3>
-                      <p className="mt-2 max-w-[48ch] leading-relaxed text-ivory/80">{item.text}</p>
-                      <a
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-3 inline-flex min-h-11 items-center text-brass underline underline-offset-4"
-                      >
-                        {item.host}
-                        <span className="sr-only"> (opens in a new tab)</span>
-                      </a>
-                    </div>
-                  </article>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section id="process" aria-labelledby="process-title" className="px-4 py-16 sm:px-8 sm:py-24">
-          <div className="mx-auto grid max-w-6xl gap-8 bg-ivory px-6 py-10 text-ink sm:px-10 sm:py-14 lg:grid-cols-[16rem_1fr]">
-            <h2 id="process-title" className="font-display text-4xl tracking-tight">
-              How it works
-            </h2>
-            <ol className="max-w-[68ch] list-decimal space-y-4 pl-5 text-lg leading-relaxed">
-              {steps.map((step) => (
-                <li key={step}>{step}</li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <section id="pricing" aria-labelledby="pricing-title" className="px-4 pb-4 sm:px-8">
-          <div className="mx-auto grid max-w-6xl gap-8 bg-ivory px-6 py-10 text-ink sm:px-10 sm:py-14 lg:grid-cols-[16rem_1fr]">
-            <h2 id="pricing-title" className="font-display text-4xl tracking-tight">
-              Pricing
-            </h2>
-            <div className="max-w-3xl">
-              <p className="text-lg">All prices are in SGD. GST is not included.</p>
-              <ul className="mt-6 divide-y divide-line border-y border-line">
-                {rates.map((rate) => (
-                  <li key={rate} className="py-4 text-lg leading-relaxed">
-                    {rate}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-6 text-lg">{terms}</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="faq" aria-labelledby="faq-title" className="px-4 py-16 sm:px-8 sm:py-20">
-          <div className="mx-auto grid max-w-6xl gap-8 bg-ivory px-6 py-10 text-ink sm:px-10 sm:py-14 lg:grid-cols-[16rem_1fr]">
-            <h2 id="faq-title" className="font-display text-4xl tracking-tight">
-              Questions
-            </h2>
-            <div className="max-w-[68ch] border-t border-line">
-              {faqs.map((item) => (
-                <details key={item.q} className="group border-b border-line">
-                  <summary className="flex min-h-12 cursor-pointer items-center justify-between gap-4 py-3 text-lg">
-                    <span>{item.q}</span>
-                    <span aria-hidden="true" className="text-ink group-open:hidden">
-                      +
-                    </span>
-                    <span aria-hidden="true" className="hidden text-ink group-open:inline">
-                      -
-                    </span>
-                  </summary>
-                  <p className="pb-4 text-lg leading-relaxed">{item.a}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="contact" aria-labelledby="contact-title" className="px-4 pb-16 sm:px-8">
-          <div className="mx-auto grid max-w-6xl gap-8 border border-brass/50 px-6 py-10 sm:px-10 sm:py-14 lg:grid-cols-[16rem_1fr]">
-            <h2 id="contact-title" className="font-display text-4xl tracking-tight text-ivory">
-              Contact
-            </h2>
-            <div className="max-w-[62ch]">
-              <p className="text-lg leading-relaxed text-ivory/85">
-                Email is the direct way to reach me. Tell me what the business does and what you
-                need the site to do.
-              </p>
-              <a
-                href={mailto}
-                className="mt-6 inline-flex min-h-12 items-center font-display text-3xl text-brass underline underline-offset-4"
-              >
-                {email}
-              </a>
-              <p className="mt-6 text-lg">
-                <a
-                  href={github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center text-ivory underline underline-offset-4"
-                >
-                  github.com/anselmlong
-                  <span className="sr-only"> (opens in a new tab)</span>
-                </a>
-              </p>
-            </div>
-          </div>
-        </section>
+        <Hero />
+        <Services />
+        <IdeasDemo />
+        <Work />
+        <Process />
+        <Pricing />
+        <About />
+        <Faq />
+        <ContactSection />
       </main>
-      <footer className="border-t border-brass/30">
-        <p className="mx-auto max-w-6xl px-5 py-8 text-sm text-ivory/70 sm:px-8">
-          Anselm Long, independent web developer in Singapore.
-        </p>
-      </footer>
+      <SiteFooter />
     </>
   );
 }
