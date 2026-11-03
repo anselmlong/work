@@ -1,57 +1,101 @@
 @import "tailwindcss";
 
 :root {
-  --timber: #1c1612;
-  --timber-deep: #120e0b;
-  --ivory: #f4efe6;
-  --ink: #241c16;
-  --muted: #5c5148;
-  --brass: #c6a060;
-  --brass-deep: #8c6a32;
-  --line: #d9cfc0;
+  --paper: #f5f1e8;
+  --paper-deep: #ece6d9;
+  --sheet: #fbf9f4;
+  --ink: #191714;
+  --ink-soft: #58524a;
+  --rule: #d9d1c1;
+  --cobalt: #2437b8;
+  --cobalt-deep: #1a2a94;
+  --cobalt-wash: #c9cff3;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme inline {
-  --font-sans: var(--font-sans-face), "Schibsted Grotesk", sans-serif;
-  --font-display: var(--font-display-face), "Bodoni Moda", Georgia, serif;
-  --color-timber: var(--timber);
-  --color-ivory: var(--ivory);
+  --font-sans: var(--font-sans-face), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-face), Georgia, serif;
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-sheet: var(--sheet);
   --color-ink: var(--ink);
-  --color-muted: var(--muted);
-  --color-brass: var(--brass);
-  --color-brass-deep: var(--brass-deep);
-  --color-line: var(--line);
+  --color-ink-soft: var(--ink-soft);
+  --color-rule: var(--rule);
+  --color-cobalt: var(--cobalt);
+  --color-cobalt-deep: var(--cobalt-deep);
+  --color-cobalt-wash: var(--cobalt-wash);
 }
 
 html {
-  scrollbar-color: var(--brass) var(--timber);
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  scrollbar-color: var(--ink-soft) var(--paper);
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
-  background: var(--timber);
-  color: var(--ivory);
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--font-sans);
+  font-size: 1.1875rem;
+  line-height: 1.6;
+  font-feature-settings: "ss01";
+  text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: var(--brass);
-  color: var(--timber-deep);
+  background: var(--cobalt-wash);
+  color: var(--ink);
 }
 
 :focus-visible {
-  outline: 2px solid var(--brass);
+  outline: 2px solid var(--cobalt);
   outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.on-dark :focus-visible {
+  outline-color: var(--paper);
+}
+
+a {
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+textarea {
+  caret-color: var(--cobalt);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 560;
+  letter-spacing: -0.022em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
 .skip-link {
   position: absolute;
   left: 1rem;
-  top: 0;
-  z-index: 50;
-  transform: translateY(-120%);
-  background: var(--brass);
-  color: var(--timber-deep);
-  padding: 0.6rem 0.9rem;
+  top: 0.75rem;
+  z-index: 60;
+  transform: translateY(-200%);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.7rem 1rem;
 }
 
 .skip-link:focus {
@@ -66,33 +110,63 @@ summary::-webkit-details-marker {
   display: none;
 }
 
-.hero-shot {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: center top;
-}
-
-@media (min-width: 800px) {
-  .hero-shot {
-    height: min(72vh, 680px);
-    aspect-ratio: auto;
-    object-position: center 18%;
-  }
+.shot {
+  box-shadow:
+    0 1px 0 rgba(25, 23, 20, 0.06),
+    0 18px 40px -18px rgba(25, 23, 20, 0.35);
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .hero-shot {
-    animation: slot-open 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  .rise {
+    animation: rise 900ms var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 90ms);
+  }
+
+  .sheet-in {
+    animation: sheet-in 700ms var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 120ms);
+  }
+
+  .shimmer {
+    background: linear-gradient(90deg, var(--paper-deep) 0%, var(--sheet) 50%, var(--paper-deep) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s linear infinite;
   }
 }
 
-@keyframes slot-open {
+.shimmer {
+  background-color: var(--paper-deep);
+}
+
+@keyframes rise {
   from {
-    clip-path: inset(0 0 14% 0);
+    opacity: 0;
+    transform: translateY(0.35em);
+    filter: blur(6px);
   }
   to {
-    clip-path: inset(0);
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) rotate(-0.6deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
   }
 }
